@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liên Hệ - Bánh Cuốn Vị NHà</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #d35400;
+            --secondary-color: #f39c12;
+            --accent-color: #e67e22;
+            --text-color: #333;
+            --light-color: #f9f9f9;
+            --dark-color: #2c3e50;
+            --success-color: #27ae60;
+            --error-color: #e74c3c;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Quicksand', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--light-color);
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo-text h1 {
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        .logo-text span {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        /* Navigation */
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+        
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        nav ul li a.active {
+            background-color: white;
+            color: var(--primary-color);
+        }
+        
+        /* Hero Section - Đã sửa */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80') center/cover no-repeat;
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            border-radius: 10px;
+            margin: 20px auto;
+            max-width: 1200px;
+            width: calc(100% - 40px);
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        /* Main Content */
+        .page-content {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary-color);
+        }
+        
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 20px auto 0;
+        }
+        
+        /* Contact Content */
+        .contact-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .contact-info {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .contact-info:hover {
+            transform: translateY(-5px);
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+        
+        .info-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(211, 84, 0, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .info-icon i {
+            font-size: 20px;
+            color: var(--primary-color);
+        }
+        
+        .info-content h3 {
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+        
+        .info-content p {
+            color: #666;
+        }
+        
+        .info-content a {
+            color: #666;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .info-content a:hover {
+            color: var(--primary-color);
+        }
+        
+        /* Contact Form */
+        .contact-form {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            font-family: 'Quicksand', sans-serif;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(211, 84, 0, 0.1);
+            outline: none;
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-family: 'Quicksand', sans-serif;
+        }
+        
+        .btn:hover {
+            background: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(211, 84, 0, 0.2);
+        }
+        
+        .btn i {
+            margin-right: 8px;
+        }
+        
+        /* Map Section */
+        .map-section {
+            margin: 60px 0;
+        }
+        
+        .map-container {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            height: 400px;
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            margin: 60px 0;
+        }
+        
+        .faq-list {
+            margin-top: 30px;
+        }
+        
+        .faq-item {
+            background: white;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            background: #f5f5f5;
+        }
+        
+        .faq-question i {
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            padding: 0 20px 20px;
+        }
+        
+        .faq-answer p {
+            color: #666;
+            line-height: 1.5;
+        }
+        
+        /* Footer - Updated to match Tintuc.html */
+        footer {
+            background: linear-gradient(135deg, #d35400, #8e4b00);
+            color: white;
+            padding: 60px 0 25px;
+            margin-top: 80px;
+            position: relative;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .footer-section h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 12px;
+            font-weight: 700;
+        }
+        
+        .footer-section h3::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(to right, #ff9f43, #d35400);
+            border-radius: 3px;
+        }
+        
+        .footer-section p, .footer-section li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+            font-size: 15px;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section a {
+            color: #ddd;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-section a:hover {
+            color: #ff9f43;
+            padding-left: 5px;
+        }
+        
+        .contact-info i {
+            margin-right: 10px;
+            color: #ff9f43;
+            width: 20px;
+        }
+        
+        .social-icons {
+            display: flex;
+            margin-top: 10px;
+        }
+        
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+        
+        .social-icons a:hover {
+            transform: translateY(-5px);
+            background: #ff9f43;
+            color: #fff;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 15px;
+            color: white;
+        }
+        
+        .back-to-top {
+            position: absolute;
+            right: 30px;
+            top: -25px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #ff9f43, #ff7f00);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo {
+                margin-bottom: 15px;
+                justify-content: center;
+            }
+            
+            nav ul {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .footer-section {
+                text-align: center;
+            }
+            
+            .footer-section h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .social-icons {
+                justify-content: center;
+            }
+            
+            .back-to-top {
+                right: 50%;
+                transform: translateX(50%);
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero {
+                padding: 60px 0;
+                width: calc(100% - 20px);
+                margin: 20px 10px;
+            }
+            
+            .hero h2 {
+                font-size: 1.6rem;
+            }
+            
+            .info-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .info-icon {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-text">
+                        <h1>BÁNH CUỐN VỊ NHÀ</h1>
+                        <span>Hương vị truyền thống - Chất lượng tuyệt hảo</span>
+                    </div>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="Trangchu.html"><i class="fas fa-home"></i> TRANG CHỦ</a></li>
+                        <li><a href="Menu.html"><i class="fas fa-utensils"></i> MENU</a></li>
+                        <li><a href="Tintuc.html"><i class="fas fa-newspaper"></i> TIN TỨC</a></li>
+                        <li><a href="Lienhe.html" class="active"><i class="fas fa-envelope"></i> LIÊN HỆ</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <div class="container">
+        <section class="hero">
+            <h2>Liên Hệ Với Vị Nhà</h2>
+            <p>Chúng tôi luôn sẵn sàng lắng nghe và hỗ trợ quý khách. Hãy liên hệ với chúng tôi để được tư vấn và phục vụ tốt nhất.</p>
+        </section>
+    </div>
+
+    <!-- Main Content -->
+    <section class="page-content">
+        <div class="container">
+            <div class="section-title">
+                <h2>Thông Tin Liên Hệ</h2>
+                <p>Luôn sẵn sàng phục vụ và mang đến cho bạn những trải nghiệm ẩm thực tuyệt vời nhất</p>
+            </div>
+
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="info-content">
+                            <h3>Địa chỉ cửa hàng</h3>
+                            <p>31B Đường Nguyễn Văn Cừ, Phường 1<br>Quận 5, Thành phố Hồ Chí Minh</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="info-content">
+                            <h3>Điện thoại</h3>
+                            <p>Hotline: <a href="tel:0909123456">0382 890 146</a></p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="far fa-clock"></i>
+                        </div>
+                        <div class="info-content">
+                            <h3>Giờ mở cửa</h3>
+                            <p>Thứ 2 - Thứ 6: 6:00 - 14:00</p>
+                            <p>Thứ 7 - Chủ nhật: 6:00 - 14:00</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="far fa-envelope"></i>
+                        </div>
+                        <div class="info-content">
+                            <h3>Email</h3>
+                            <p><a href="mailto:banhcuonvinha@gmail.com">banhcuonvinha@gmail.com</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <h3>Gửi tin nhắn cho chúng tôi</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Họ và tên</label>
+                            <input type="text" id="name" class="form-control" placeholder="Nhập họ và tên của bạn" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" class="form-control" placeholder="Nhập địa chỉ email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Số điện thoại</label>
+                            <input type="tel" id="phone" class="form-control" placeholder="Nhập số điện thoại">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Nội dung tin nhắn</label>
+                            <textarea id="message" class="form-control" placeholder="Nhập nội dung bạn muốn gửi đến chúng tôi" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn"><i class="fas fa-paper-plane"></i> Gửi tin nhắn</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="container">
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.730894633375!2d106.68323937451697!3d10.75521105958576!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f05054c2a39%3A0xa1e1c2a86ac85aa1!2zMzFCIE5ndXnhu4VuIFbEg24gQ-G7qywgUGjGsOG7nW5nIDEsIFF14bqtbiA1LCBI4buTIENow60gTWluaCwgVmnhu4d0IE5hbQ!5e0!3m2!1svi!2s!4v1757988175032!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Câu Hỏi Thường Gặp</h2>
+                <p>Những thắc mắc thường gặp khi khách hàng liên hệ với chúng tôi</p>
+            </div>
+
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Bánh cuốn Vị Nhà có giao hàng tận nơi không?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Có, Bạn có thể đặt hàng trên Shoppe Food. </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <a href="#" class="back-to-top">
+                <i class="fas fa-arrow-up"></i>
+            </a>
+            
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Về Chúng Tôi</h3>
+                    <p>Bánh Cuốn Vị Nhà - Nơi lưu giữ hương vị truyền thống Việt Nam với những món ăn ngon, chất lượng và dịch vụ tận tâm.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Liên Hệ</h3>
+                    <div class="contact-info">
+                        <p><i class="fas fa-map-marker-alt"></i> 318 Đường Nguyễn Văn Cừ, Quận 5, Thành phố Hồ Chí Minh</p>
+                        <p><i class="fas fa-phone"></i> 0382 890 146</p>
+                        <p><i class="fas fa-envelope"></i> banhcuonvinha@gmail.com</p>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Giờ Mở Cửa</h3>
+                    <p>Thứ 2 - Thứ 6: 6:00 - 14:00</p>
+                    <p>Thứ 7 - Chủ nhật: 6:00 - 14:00</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Theo Dõi Chúng Tôi</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Bánh Cuốn Vị Nhà. Tất cả quyền được bảo lưu.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Form submission handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            // In a real application, you would send this data to a server
+            // For this example, we'll just show an alert
+            alert('Cảm ơn bạn ' + name + ' đã liên hệ với chúng tôi. Chúng tôi sẽ phản hồi trong thời gian sớm nhất!');
+            
+            // Reset the form
+            document.getElementById('contactForm').reset();
+        });
+        
+        // FAQ functionality
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            
+            question.addEventListener('click', () => {
+                // Close all other items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current item
+                item.classList.toggle('active');
+            });
+        });
+        
+        // Simple animation on scroll
+        const animateOnScroll = function() {
+            const elements = document.querySelectorAll('.contact-info, .contact-form');
+            
+            elements.forEach(element => {
+                const position = element.getBoundingClientRect();
+                
+                // If element is in viewport
+                if(position.top < window.innerHeight && position.bottom >= 0) {
+                    element.style.opacity = 1;
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        // Initialize elements for animation
+        window.addEventListener('load', function() {
+            const elements = document.querySelectorAll('.contact-info, .contact-form');
+            
+            elements.forEach(element => {
+                element.style.opacity = 0;
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            });
+            
+            // Trigger animation on scroll
+            window.addEventListener('scroll', animateOnScroll);
+            // Trigger once on load in case elements are already in view
+            animateOnScroll();
+        });
+    </script>
+</body>
+</html>

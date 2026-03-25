@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bánh Cuốn Vị Nhà - Tinh Hoa Ẩm Thực Truyền Thống Việt</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Quicksand', 'Segoe UI', Arial, sans-serif;
+        }
+        
+        :root {
+            --primary-color: #e67e22;
+            --primary-dark: #d35400;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --light-color: #f9f9f9;
+            --text-color: #333;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.15);
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--light-color);
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+            color: var(--primary-dark);
+            position: relative;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--primary-color);
+        }
+        
+        /* Header */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+        
+        .header-scrolled {
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            padding: 5px 0;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 32px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin: 0 12px;
+            position: relative;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 600;
+            transition: var(--transition);
+            padding: 5px 0;
+            position: relative;
+        }
+        
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: var(--transition);
+            box-shadow: 0 4px 10px rgba(230, 126, 34, 0.3);
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(230, 126, 34, 0.4);
+        }
+        
+        /* Mobile menu */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 25px;
+            cursor: pointer;
+        }
+        
+        .menu-toggle span {
+            width: 100%;
+            height: 3px;
+            background-color: var(--text-color);
+            transition: var(--transition);
+            border-radius: 3px;
+        }
+        
+        /* Slideshow */
+        .slideshow-container {
+            max-width: 1200px;
+            position: relative;
+            margin: 20px auto;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+            
+        .slide {
+            display: none;
+            width: 100%;
+            position: relative;
+        }
+            
+        .slide img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+        }   
+            
+        .slide-text {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+            
+        .slide-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-family: 'Playfair Display', serif;
+        }
+            
+        .slide-text p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+            
+        .fade {
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+            
+        @keyframes fade {
+            from {opacity: .4}
+            to {opacity: 1}
+        }
+        
+        /* Slideshow navigation */
+        .slideshow-nav {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+        
+        .slideshow-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .slideshow-dot.active {
+            background: white;
+            transform: scale(1.2);
+        }
+        
+        /* Slideshow controls */
+        .slideshow-controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .slideshow-prev, .slideshow-next {
+            background: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .slideshow-prev:hover, .slideshow-next:hover {
+            background: rgba(0,0,0,0.8);
+        }
+        
+        /* Giới thiệu */
+        .intro-section {
+            padding: 80px 0;
+        }
+        
+        .intro {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .intro-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+        
+        .intro-image:before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 2px solid var(--primary-color);
+            border-radius: 15px;
+            opacity: 0.3;
+            z-index: -1;
+        }
+        
+        .intro-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+        
+        .intro-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .intro-text {
+            flex: 1;
+        }
+        
+        .intro-text h2 {
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+            font-size: 2rem;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .intro-text p {
+            margin-bottom: 20px;
+        }
+        
+        /* Menu Grid */
+        .menu-section {
+            padding: 80px 0;
+            background: #fff;
+        }
+        
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .menu-item {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .menu-item:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .menu-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .menu-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .menu-item-content {
+            padding: 25px;
+        }
+        
+        .menu-item-content h3 {
+            color: var(--primary-dark);
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+        }
+        
+        .price {
+            font-weight: bold;
+            color: var(--accent-color);
+            margin: 15px 0;
+            font-size: 1.3rem;
+        }
+        
+        .menu-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--primary-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            z-index: 1;
+        }
+        
+        
+        /* Reviews */
+        .reviews {
+            padding: 80px 0;
+            background: #fff;
+        }
+        
+        .review-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        
+        .review-item {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+        
+        .review-item:before {
+            content: '"';
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            font-size: 60px;
+            color: rgba(230, 126, 34, 0.2);
+            font-family: Georgia, serif;
+        }
+        
+        .review-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-bottom: 15px;
+            border: 3px solid var(--primary-color);
+        }
+        
+        .review-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .review-stars {
+            color: #f1c40f;
+            margin: 10px 0;
+        }
+        
+        /* Blog */
+        .blog-section {
+            padding: 80px 0;
+        }
+        
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .blog-item {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .blog-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .blog-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .blog-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .blog-item-content {
+            padding: 20px;
+        }
+        
+        .blog-item-content h3 {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .blog-date {
+            color: #777;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        /* Newsletter */
+        .newsletter {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
+            color: white;
+            text-align: center;
+            padding: 60px 0;
+        }
+        
+        .newsletter-form {
+            max-width: 500px;
+            margin: 30px auto 0;
+            display: flex;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 30px 0 0 30px;
+            outline: none;
+        }
+        
+        .newsletter-form button {
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 0 25px;
+            border-radius: 0 30px 30px 0;
+            cursor: pointer;
+            font-weight: bold;
+            transition: var(--transition);
+        }
+        
+        .newsletter-form button:hover {
+            background: #1a252f;
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #d35400, #8e4b00);
+            color: white;
+            padding: 60px 0 25px;
+            margin-top: 80px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section h3 {
+            font-size: 22px;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .footer-section h3::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(to right, var(--secondary-color), var(--primary-color));
+            border-radius: 3px;
+        }
+        
+        .footer-section p, .footer-section li {
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section a {
+            color: #ddd;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-section a:hover {
+            color: var(--secondary-color);
+            padding-left: 5px;
+        }
+        
+        .contact-info i {
+            margin-right: 10px;
+            color: var(--secondary-color);
+            width: 20px;
+        }
+        
+        .social-icons a {
+            display: inline-block;
+            margin-right: 15px;
+            font-size: 24px;
+            transition: var(--transition);
+        }
+        
+        .social-icons a:hover {
+            transform: translateY(-5px);
+            color: var(--secondary-color);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 15px;
+            color:white;
+        }
+        /* Back to Top Button */
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+            opacity: 0;
+            visibility: hidden;
+            z-index: 999;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+        
+        /* Animations */
+        .animate-fade-in {
+            animation: fadeIn 1s ease forwards;
+        }
+        
+        .animate-fade-in-up {
+            animation: fadeInUp 1s ease forwards;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .menu-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .review-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .blog-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .intro, .story {
+                flex-direction: column;
+            }
+            
+            .slide-text h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: row;
+            }
+            
+            nav {
+                position: fixed;
+                top: 0;
+                right: -300px;
+                width: 300px;
+                height: 100vh;
+                background: white;
+                z-index: 1000;
+                transition: var(--transition);
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            nav.active {
+                right: 0;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                padding: 80px 30px 30px;
+            }
+            
+            nav ul li {
+                margin: 15px 0;
+            }
+            
+            .menu-toggle {
+                display: flex;
+                z-index: 1001;
+            }
+            
+            .menu-toggle.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 8px);
+            }
+            
+            .menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .menu-toggle.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -8px);
+            }
+            
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-form input {
+                border-radius: 30px;
+                margin-bottom: 10px;
+            }
+            
+            .newsletter-form button {
+                border-radius: 30px;
+                padding: 15px;
+            }
+            
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .slide img {
+                height: 400px;
+            }
+            
+            .slide-text h2 {
+                font-size: 1.8rem;
+            }
+            
+            .slide-text p {
+                font-size: 1rem;
+            }
+            
+            .slideshow-controls {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .slide img {
+                height: 350px;
+            }
+            
+            .slide-text {
+                padding: 20px;
+            }
+            
+            .slide-text h2 {
+                font-size: 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="mainHeader">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo"><i class="fas fa-utensils"></i> VỊ NHÀ </div>
+                <div class="menu-toggle" id="menuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <nav id="mainNav">
+                    <ul>
+                            <li><a href="Trangchu.html"><i class="fas fa-home"></i>TRANG CHỦ</a></li>
+                            <li><a href="menu.html"><i class="fas fa-utensils"></i>MENU</a></li>
+                            <li><a href="SEO1.html"><i class="fas fa-newspaper"></i>TIN TỨC</a></li>
+                            <li><a href="Lienhe.html"><i class="fas fa-envelope"></i>LIÊN HỆ</a></li>
+                        </ul>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner - Slideshow -->
+    <div class="slideshow-container">
+        <div class="slide fade">
+            <img src="Banner.jpg" alt="Banner">
+            <div class="slide-text">
+                <h2>Bánh Cuốn Vị Nhà</h2>
+                <p>Hương vị truyền thống - Tinh hoa ẩm thực Việt</p>
+            </div>
+        </div>
+        
+        <div class="slide fade">
+            <img src="Menu.jpg" alt="Menu">
+            <div class="slide-text">
+                <h2>Khuyến Mãi Đặc Biệt</h2>
+                <p>Giảm giá 20% cho đơn hàng đầu tiên của khách hàng mới</p>
+            </div>
+        </div>
+        
+        <div class="slide fade">
+            <img src="Banner 3.jpg" alt="Banner 3">
+            <div class="slide-text">
+                <h2>Bánh Cuốn Vị Nhà</h2>
+                <p>Trải nghiệm ẩm thực trọn vẹn hương vị Việt Nam</p>
+            </div>
+        </div>
+        
+        <div class="slideshow-nav" id="slideshowNav"></div>
+        
+        <div class="slideshow-controls">
+            <button class="slideshow-prev" onclick="plusSlides(-1)">&#10094;</button>
+            <button class="slideshow-next" onclick="plusSlides(1)">&#10095;</button>
+        </div>
+    </div>
+
+    <!-- Giới thiệu ngắn -->
+    <section class="intro-section" id="intro">
+        <div class="container">
+            <h2 class="section-title">GIỚI THIỆU</h2>
+            <div class="intro">
+                <div class="intro-image animate-fade-in">
+                    <img src="Slide show 3.jpg" alt="Bánh cuốn Vị Nhà">
+                </div>
+                <div class="intro-text animate-fade-in-up">
+                    <h2>Bánh cuốn Vị Nhà</h2>
+                    <p style="text-align: justify;line-height: 1.5; margin: 15px 0">Với hơn 10 năm kinh nghiệm, Bánh cuốn Vị nhà tự hào mang đến những mẻ bánh cuốn thơm ngon, đậm đà hương vị truyền thống. Bí quyết qua nhiều năm cùng sự tâm huyết với nghề đã tạo nên thương hiệu Bánh cuốn Như Thảo nổi tiếng khắp Sài Thành.</p>
+                    <p style="text-align: justify;line-height: 1.5; margin: 15px 0">Chúng tôi luôn chọn lựa những nguyên liệu tươi ngon nhất, chế biến tỉ mỉ và công phu để mang đến cho thực khách những trải nghiệm ẩm thực tuyệt vời nhất.</p>
+                    <a href="Lienhe.html" class="cta-button">Liên hệ ngay</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu nổi bật -->
+    <section class="menu-section" id="menu">
+        <div class="container">
+            <h2 class="section-title">MENU NỔI BẬT</h2>
+            <div class="menu-grid">
+                <!-- Món 1 -->
+                <div class="menu-item animate-fade-in-up">
+                    <div class="menu-badge">Bán chạy</div>
+                    <img src="Bánh cuốn nhân thịt.jpg" alt="Bánh cuốn nhân thịt">
+                    <div class="menu-item-content">
+                        <h3>Bánh Cuốn Nhân Thịt</h3>
+                        <p>Đĩa bánh cuốn nóng hổi, mềm mịn cuốn nhân thịt đậm đà, ăn kèm chả lụa, rau thơm và nước mắm chua ngọt chuẩn vị.</p>
+                        <p class="price">30.000 VNĐ</p>
+                        <a href="menu.html" class="cta-button">Đặt món</a>
+                    </div>
+                </div>
+                
+                <!-- Món 2 -->
+                <div class="menu-item animate-fade-in-up">
+                    <div class="menu-badge">Mới</div>
+                    <img src="Bánh cuốn tôm thịt.jpg" alt="Bánh cuốn tôm thịt">
+                    <div class="menu-item-content">
+                        <h3>Bánh Cuốn Tôm Thịt</h3>
+                        <p>Bánh cuốn trắng mịn, cuốn nhân tôm thịt tươi ngọt, ăn kèm rau thơm, chả lụa và nước mắm đậm đà.</p>
+                        <p class="price">35.000 VNĐ</p>
+                        <a href="menu.html" class="cta-button">Đặt món</a>
+                    </div>
+                </div>
+                
+                <!-- Món 3 -->
+                <div class="menu-item animate-fade-in-up">
+                    <div class="menu-badge">Đặc biệt</div>
+                    <img src="Trứng gà tôm nấm thịt.jpg" alt="Trứng gà tôm nấm thịt">
+                    <div class="menu-item-content">
+                        <h3>Trứng Gà Tôm Nấm Thịt</h3>
+                        <p>Bánh cuốn trứng gà vàng óng, cuốn nhân tôm – nấm – thịt đậm vị, ăn kèm rau thơm, chả lụa và nước mắm hài hòa.</p>
+                        <p class="price">50.000 VNĐ</p>
+                        <a href="menu.html" class="cta-button">Đặt món</a>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="menu.html" class="cta-button">Xem toàn bộ menu</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Đánh giá từ khách hàng -->
+    <section class="reviews">
+        <div class="container">
+            <h2 class="section-title">Đánh giá từ khách hàng</h2>
+            <div class="review-grid">
+                <!-- Review 1 -->
+                <div class="review-item animate-fade-in-up">
+                    <div class="review-avatar">
+                        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Khách hàng">
+                    </div>
+                    <h3>Chị Nguyễn Minh Anh</h3>
+                    <div class="review-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"Bánh cuốn ở đây ngon tuyệt vời! Nước chấm đậm đà, bánh mỏng và dai vừa phải. Tôi đã thử nhiều nơi nhưng không đâu bằng bánh cuốn Vị Nhà."</p>
+                </div>
+                
+                <!-- Review 2 -->
+                <div class="review-item animate-fade-in-up">
+                    <div class="review-avatar">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Khách hàng">
+                    </div>
+                    <h3>Anh Trần Quang Huy</h3>
+                    <div class="review-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p>"Không gian rất đẹp và ấm cúng. Nhân viên phục vụ nhiệt tình, chu đáo. Bánh cuốn ở đây có hương vị đặc trưng mà tôi nhớ mãi sau khi thưởng thức."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tin tức & Sự kiện -->
+    <section class="blog-section">
+        <div class="container">
+            <h2 class="section-title">TIN TỨC & SỰ KIỆN</h2>
+            <div class="blog-grid">
+                <!-- Bài 1 -->
+                <div class="blog-item animate-fade-in-up">
+                    <img src="https://www.hungryhuy.com/wp-content/uploads/banh-cuon-w-herbs-sauce-1536x1024.jpg"Tin tức">
+                    <div class="blog-item-content">
+                        <span class="blog-date"><i class="far fa-calendar-alt"></i> 15/08/2023</span>
+                        <h3>Cách làm bánh cuốn Việt Nam tại nhà ngon như ngoài tiệm</h3>
+                        <p>Hướng dẫn cách làm bánh cuốn Việt Nam.</p>
+                        <a href="#" class="cta-button" style="padding: 8px 15px;">Đọc thêm</a>
+                    </div>
+                </div>
+                
+                <!-- Bài 2 -->
+                <div class="blog-item animate-fade-in-up">
+                    <img src="https://images.unsplash.com/photo-1547592180-85f173990554?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Tin tức">
+                    <div class="blog-item-content">
+                        <span class="blog-date"><i class="far fa-calendar-alt"></i> 02/08/2023</span>
+                        <h3>Menu mùa thu 2023 - Hương vị mới lạ</h3>
+                        <p>Khám phá menu mùa thu 2023 với nhiều món ăn mới lạ, kết hợp giữa hương vị truyền thống và hiện đại.</p>
+                        <a href="#" class="cta-button" style="padding: 8px 15px;">Đọc thêm</a>
+                    </div>
+                </div>
+                
+                <!-- Bài 3 -->
+                <div class="blog-item animate-fade-in-up">
+                    <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Tin tức">
+                    <div class="blog-item-content">
+                        <span class="blog-date"><i class="far fa-calendar-alt"></i> 25/07/2023</span>
+                        <h3>Bí quyết làm bánh cuốn ngon tại nhà</h3>
+                        <p>Chia sẻ một số bí quyết đơn giản để làm bánh cuốn ngon tại nhà, giúp bạn thưởng thức món ăn yêu thích mọi lúc.</p>
+                        <a href="#" class="cta-button" style="padding: 8px 15px;">Đọc thêm</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Về Chúng Tôi</h3>
+                    <p>Bánh Cuốn Vị Nhà - Nơi lưu giữ hương vị truyền thống Việt Nam với những món ăn ngon, chất lượng và dịch vụ tận tâm.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Liên Hệ</h3>
+                    <div class="contact-info">
+                        <p><i class="fas fa-map-marker-alt"></i> 31B Đường Nguyễn Văn Cừ, Quận 5, Thành phố Hồ Chí Minh</p>
+                        <p><i class="fas fa-phone"></i> 0382 890 146</p>
+                        <p><i class="fas fa-envelope"></i>banhcuonvinha@gmail.com</p>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Giờ Mở Cửa</h3>
+                    <p>Thứ 2 - Thứ 6: 6:00 - 14:00</p>
+                    <p>Thứ 7 - Chủ nhật: 6:00 - 14:00</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Theo Dõi Chúng Tôi</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Bánh Cuốn Vị Nhà. Tất cả quyền được bảo lưu.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script>
+        // Slideshow
+        let slideIndex = 0;
+        const slides = document.getElementsByClassName("slide");
+        const dotsContainer = document.getElementById("slideshowNav");
+        
+        // Tạo dots cho slideshow
+        for (let i = 0; i < slides.length; i++) {
+            const dot = document.createElement("div");
+            dot.classList.add("slideshow-dot");
+            dot.addEventListener("click", () => {
+                currentSlide(i);
+            });
+            dotsContainer.appendChild(dot);
+        }
+        
+        const dots = document.getElementsByClassName("slideshow-dot");
+        
+        function showSlides() {
+            // Ẩn tất cả slides
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+                dots[i].classList.remove("active");
+            }
+            
+            // Tăng index và quay lại slide đầu nếu cần
+            slideIndex++;
+            if (slideIndex >= slides.length) {
+                slideIndex = 0;
+            }
+            
+            // Hiển thị slide hiện tại
+            slides[slideIndex].style.display = "block";
+            dots[slideIndex].classList.add("active");
+            
+            // Chuyển slide sau 5 giây
+            window.slideTimer = setTimeout(showSlides, 5000);
+        }
+        
+        function currentSlide(n) {
+            // Ẩn tất cả slides
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+                dots[i].classList.remove("active");
+            }
+            
+            // Hiển thị slide được chọn
+            slideIndex = n;
+            slides[slideIndex].style.display = "block";
+            dots[slideIndex].classList.add("active");
+            
+            // Reset timer
+            clearTimeout(window.slideTimer);
+            window.slideTimer = setTimeout(showSlides, 5000);
+        }
+        
+        function plusSlides(n) {
+            let newIndex = slideIndex + n;
+            if (newIndex >= slides.length) {
+                newIndex = 0;
+            } else if (newIndex < 0) {
+                newIndex = slides.length - 1;
+            }
+            currentSlide(newIndex);
+        }
+        
+        // Mobile menu toggle
+        const menuToggle = document.getElementById("menuToggle");
+        const mainNav = document.getElementById("mainNav");
+        
+        menuToggle.addEventListener("click", () => {
+            menuToggle.classList.toggle("active");
+            mainNav.classList.toggle("active");
+        });
+        
+        // Back to top button
+        const backToTopBtn = document.getElementById("backToTop");
+        
+        window.addEventListener("scroll", () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add("visible");
+            } else {
+                backToTopBtn.classList.remove("visible");
+            }
+            
+            // Header scroll effect
+            const header = document.getElementById("mainHeader");
+            if (window.pageYOffset > 50) {
+                header.classList.add("header-scrolled");
+            } else {
+                header.classList.remove("header-scrolled");
+            }
+        });
+        
+        backToTopBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        // Khởi tạo slideshow
+        // Hiển thị slide đầu tiên ngay lập tức
+        slides[0].style.display = "block";
+        dots[0].classList.add("active");
+        
+        // Bắt đầu slideshow sau 5 giây
+        window.slideTimer = setTimeout(showSlides, 5000);
+        
+        // Animation on scroll
+        const animatedElements = document.querySelectorAll('.animate-fade-in, .animate-fade-in-up');
+        
+        function checkScroll() {
+            animatedElements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = 1;
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', checkScroll);
+        window.addEventListener('load', checkScroll);
+    </script>
+</body>
+</html>
